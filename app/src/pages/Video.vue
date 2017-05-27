@@ -1,0 +1,44 @@
+<template>
+  <div class="container">
+
+    <div class="card">
+      <video class="card-img-top embed-responsive responsive-embed-16by9" controls v-if="loaded">
+        <source :src="video.file" >
+      </video>
+      <div class="card-block">
+        <h4 class="card-title">{{ video.title }}</h4>
+        <p class="card-text">{{ video.description }}</p>
+        <p class="card-text">
+          <small class="text-muted">Uploaded by <router-link to="">{{video.user.name}}</router-link> at {{ video.created_at }}</small>
+        </p>
+      </div>
+    </div>
+
+    <h1></h1>
+
+
+  </div>
+</template>
+
+<script>
+  import { getVideo } from 'src/api/video'
+  import { mapGetters } from 'vuex'
+
+  export default {
+    name: 'video',
+    computed: {
+      ...mapGetters(['video'])
+    },
+    data: function () {
+      return {
+        loaded: false
+      }
+    },
+    mounted () {
+      getVideo(this.$route.params.id)
+      .then(() => {
+        this.loaded = true
+      })
+    }
+  }
+</script>

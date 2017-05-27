@@ -32,7 +32,7 @@ class VideoController extends Controller
      */
     public function store(StoreVideo $request)
     {
-        $path = $request->video->store('videos', 's3');
+        $path = $request->video->store('videos', 's3', 'public');
 
         $video = new Video($request->all());
         $video->file = $this->videosPath . $path;
@@ -50,7 +50,7 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        //
+        return $video;
     }
 
     /**

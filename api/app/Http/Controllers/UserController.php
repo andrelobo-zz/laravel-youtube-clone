@@ -29,7 +29,7 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user()->load(['videos' => function ($query) {
-            $query->orderBy('created_at', 'asc');
+            $query->orderBy('created_at', 'desc');
         }, 'videos.categories']);
 
         return $user;

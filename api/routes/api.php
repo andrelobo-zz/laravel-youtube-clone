@@ -17,9 +17,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/users/profile', 'UserController@update');
     Route::delete('/users/profile', 'UserController@destroy');
 
-    Route::get('/videos', 'VideoController@home');
     Route::post('/videos', 'VideoController@store');
 });
+
+Route::get('/videos', 'VideoController@home');
+Route::get('/videos/{video}', 'VideoController@show');
 
 Route::post('/users', 'UserController@store')->name('register');
 Route::get('/users/{user}', 'UserController@show');

@@ -37,14 +37,14 @@ class Video extends Model
      *
      * @var array
      */
-    protected $with = ['categories'];
+    protected $with = ['categories', 'user'];
 
     /**
      * Get the User for the video.
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'uuid');
+        return $this->belongsTo('App\User', 'user_id', 'uuid');
     }
 
     /**

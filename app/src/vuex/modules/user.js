@@ -2,12 +2,12 @@
 import * as types from 'src/vuex/mutation-types'
 
 const state = {
-  title: ''
+  profile: ''
 }
 
 const mutations = {
-  [types.SET_TITLE] (state, title) {
-    state.title = title
+  [types.GET_PROFILE] (state, profile) {
+    state.profile = profile
   }
 }
 

@@ -1,30 +1,21 @@
+<style lang="sass" src="./assets/sass/main.sass"></style>
+
 <template>
-  <div id="app">
-    <h1>welcome to vue-spa</h1>
-    <div class="nav">
-      <router-link :to="{ name: 'index' }">index</router-link>
-      <router-link :to="{ name: 'about' }">about</router-link>
+    <div id="app">
+        <header-component></header-component>
+        <router-view style="margin-top: 1em"></router-view>
     </div>
-    <router-view></router-view>
-  </div>
 </template>
 
 <script>
-import store from 'src/vuex/store'
+  import store from 'src/vuex/store'
+  import HeaderComponent from 'src/components/Header'
 
-export default {
-  name: 'app',
-  store
-}
+  export default {
+    name: 'app',
+    components: {
+      HeaderComponent
+    },
+    store
+  }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

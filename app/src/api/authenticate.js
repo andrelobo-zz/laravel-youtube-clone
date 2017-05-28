@@ -1,7 +1,9 @@
 import store from 'src/vuex/store'
 
-import { AUTHENTICATE } from 'src/vuex/mutation-types'
+import { AUTHENTICATE, ERROR } from 'src/vuex/mutation-types'
 import { API } from './'
+
+import { getProfile } from './user'
 
 /**
  * Authenticate user
@@ -13,7 +15,7 @@ export const authenticate = async (username, password) => {
   return API.post(`/oauth/token`, {
     grant_type: 'password',
     client_id: '2',
-    client_secret: 'uuiKYcO4wNx1gJvK2mnwEZztn7LYG4UgKhh4wIsp',
+    client_secret: 'XluVecXnXXW0rbdwx9ji86WtdlbQyMVnwcZuQjLS',
     scope: '',
     username,
     password
@@ -24,5 +26,11 @@ export const authenticate = async (username, password) => {
       expires: data.expires_in,
       refresh: data.refresh_token
     })
+
+    return getProfile()
+  })
+  .catch(err => {
+    store.commit(ERROR, err)
+    return Promise.reject(err)
   })
 }

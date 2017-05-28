@@ -6,7 +6,10 @@ Vue.use(VueRouter)
 import Home from 'src/pages/Home'
 import Video from 'src/pages/Video'
 import Login from 'src/pages/Login'
+import Register from 'src/pages/Register'
 import Profile from 'src/pages/Profile'
+import Upload from 'src/pages/Upload'
+import User from 'src/pages/User'
 
 const routes = [
   {
@@ -15,14 +18,29 @@ const routes = [
     component: Home
   },
   {
+    path: '/videos/upload',
+    name: 'Upload',
+    component: Upload
+  },
+  {
     path: '/videos/:id',
     name: 'Video',
     component: Video
   },
   {
+    path: '/users/:id',
+    name: 'User',
+    component: User
+  },
+  {
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/profile',

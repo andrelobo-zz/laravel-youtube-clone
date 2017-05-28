@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->uuid('uuid')->unique();
             $table->string('name');
+            $table->string('avatar')->default('https://www.gravatar.com/avatar/?s=350');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

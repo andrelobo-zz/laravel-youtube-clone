@@ -1,36 +1,45 @@
 <template>
   <div class="container">
-    <div class="card card-inverse card-profile">
+    <div class="card card-inverse card-profile" :style="{background: color, borderColor: color }">
       <div class="card-block">
         <h1 class="card-title display-4">
-          <img :src="profile.avatar" class="rounded rounded-circle avatar-image img-thumbnail"/>
-          {{ profile.name }}
+          <img :src="user.avatar" class="rounded rounded-circle avatar-image img-thumbnail"/>
+          {{ user.name }}
         </h1>
       </div>
     </div>
 
     <div class="card-columns">
-      <list-video v-for="video in profile.videos" :key="video.id" :video="video"></list-video>
+      <list-video v-for="video in user.videos" :key="video.id" :video="video"></list-video>
     </div>
 
   </div>
 </template>
 
 <script>
-  import { getProfile } from 'src/api/user'
+  import { getUser } from 'src/api/user'
   import { mapGetters } from 'vuex'
   import ListVideo from 'src/components/ListVideo'
+  import { stringToColor } from 'src/helpers/color'
 
   export default {
-    name: 'profile',
+    name: 'user',
+    data () {
+      return {
+        color: '#00bcd4'
+      }
+    },
     computed: {
-      ...mapGetters(['profile'])
+      ...mapGetters(['user'])
     },
     components: {
       ListVideo
     },
     mounted () {
-      getProfile()
+      getUser(this.$route.params.id)
+      .then(() => {
+        this.color = '#' + stringToColor(this.user.name)
+      })
     }
   }
 </script>

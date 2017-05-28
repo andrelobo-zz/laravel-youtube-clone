@@ -2,7 +2,8 @@ import * as types from 'src/vuex/mutation-types'
 
 const state = {
   all: [],
-  single: {}
+  single: {},
+  upload: {}
 }
 
 const mutations = {
@@ -11,6 +12,9 @@ const mutations = {
   },
   [types.GET_VIDEO] (state, video) {
     state.single = video
+  },
+  [types.UPLOAD_VIDEO] (state, video) {
+    state.upload = video
   }
 }
 

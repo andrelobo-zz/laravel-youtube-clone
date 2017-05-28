@@ -56,6 +56,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $user = $user->load(['videos' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }, 'videos.categories']);
+
         return $user;
     }
 

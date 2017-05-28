@@ -14,6 +14,9 @@ export const authenticated = ({ api }) => {
 export const profile = ({ user }) => {
   return user.profile
 }
+export const user = ({ user }) => {
+  return user.single
+}
 
 /**
  * Video
@@ -23,4 +26,11 @@ export const videos = ({ video }) => {
 }
 export const video = ({ video }) => {
   return video.single
+}
+
+/**
+ * Alerts
+ */
+export const alerts = ({ alert }) => {
+  return alert.all
 }

@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->uuid('id')->primary();
             $table->timestamps();
             $table->text('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('file');
             $table->boolean('private');
 

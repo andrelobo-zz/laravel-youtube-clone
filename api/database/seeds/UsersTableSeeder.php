@@ -11,10 +11,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 15)
+        factory(App\User::class, 5)
             ->create()
             ->each(function ($user) {
-                for ($i = 1; $i <= 15; $i++) {
+                for ($i = 1; $i <= 5; $i++) {
                     $video = $user->videos()->save(factory(App\Video::class)->make());
 
                     for ($j = 1; $j <= 3; $j++) {

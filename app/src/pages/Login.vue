@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import { authenticate } from 'src/api/authenticate'
   import { mapActions } from 'vuex'
 
   export default {
@@ -31,11 +30,8 @@
       }
     },
     methods: {
-      test: function () {
-        this.showAlert('Hello world', 'this is a test', 'warning')
-      },
       login: function () {
-        authenticate(this.username, this.password)
+        this.authenticate(this.username, this.password)
         .then(() => {
           this.$router.replace({name: 'Profile'})
         })
@@ -43,7 +39,7 @@
           this.failed = true
         })
       },
-      ...mapActions(['showAlert'])
+      ...mapActions(['showAlert', 'authenticate])
     }
   }
 </script>

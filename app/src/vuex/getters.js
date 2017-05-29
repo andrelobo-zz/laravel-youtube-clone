@@ -2,7 +2,7 @@
  * Authentication
  */
 export const apiToken = ({ api }) => {
-  return api.authentication.token
+  return api.authentication ? api.authentication.token : null
 }
 export const authenticated = ({ api }) => {
   return !!api.authentication

@@ -10,17 +10,7 @@
         v-for="alert in alerts"
         :key="alert.id"
     >
-      <span class="icon-info-circled alert-icon-float-left"></span>
-      <div>
-        <strong>{{ alert.title }}!</strong> {{ alert.message }}
-
-        <div v-if="alert.actions.length > 0" class="btn-group btn-group-xs pull-right btn-group-alerts" role="group"
-             aria-label="...">
-          <a v-link="button.link" type="button" class="btn" :class="'btn-'+button.type" v-for="button in alert.actions">
-            {{button.text}} <i v-if="button.icon" class="fa fa-fw" :class="'fa-'+button.icon"></i>
-          </a>
-        </div>
-      </div>
+      <div><strong>{{ alert.title }}!</strong> {{ alert.message }}</div>
     </alert>
   </div>
 

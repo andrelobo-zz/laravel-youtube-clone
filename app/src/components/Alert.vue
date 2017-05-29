@@ -1,19 +1,19 @@
 <template>
   <div
       v-if="show"
-      v-bind:class="{
+      :class="{
       'alert'        : true,
       'alert-success': (type == 'success'),
       'alert-warning': (type == 'warning'),
       'alert-info'   : (type == 'info'),
       'alert-danger' : (type == 'danger')
     }"
-      transition="fade"
       :style="{width:width}"
       role="alert">
     <button v-show="dismissable" type="button" class="close" @click="show = false">
       <span>&times;</span>
     </button>
+    <slot></slot>
   </div>
 </template>
 

@@ -1,11 +1,13 @@
 import * as types from 'src/vuex/mutation-types'
 
+console.log(types)
+
 const state = {
   all: []
 }
 
 const mutations = {
-  [types.ALERT_SHOW] (state, title, message, type, duration, actions) {
+  [types.ALERT_SHOW] (state, {title, message, type, duration, actions}) {
     if (!duration) {
       duration = 4000 // 5 seconds
     }
@@ -13,7 +15,7 @@ const mutations = {
       actions = []
     }
 
-    state.alerts.push({
+    state.all.push({
       title,
       message,
       type,

@@ -1,9 +1,4 @@
-import store from 'src/vuex/store'
-
-import { AUTHENTICATE, ERROR } from 'src/vuex/mutation-types'
 import { API } from './'
-
-import { getProfile } from './user'
 
 /**
  * Authenticate user
@@ -19,18 +14,5 @@ export const authenticate = async (username, password) => {
     scope: '',
     username,
     password
-  })
-  .then(({ data }) => {
-    store.commit(AUTHENTICATE, {
-      token: data.access_token,
-      expires: data.expires_in,
-      refresh: data.refresh_token
-    })
-
-    return getProfile()
-  })
-  .catch(err => {
-    store.commit(ERROR, err)
-    return Promise.reject(err)
   })
 }

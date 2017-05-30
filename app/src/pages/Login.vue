@@ -12,7 +12,7 @@
       <input id="password" class="form-control" type="password" v-model="password"/>
     </div>
 
-    <button class="btn btn-primary" @click="test">Login</button>
+    <button class="btn btn-primary" @click="login">Login</button>
 
   </div>
 </template>
@@ -31,7 +31,7 @@
     },
     methods: {
       login: function () {
-        this.authenticate(this.username, this.password)
+        this.authenticate({username: this.username, password: this.password})
         .then(() => {
           this.$router.replace({name: 'Profile'})
         })
@@ -39,7 +39,7 @@
           this.failed = true
         })
       },
-      ...mapActions(['showAlert', 'authenticate])
+      ...mapActions(['showAlert', 'authenticate'])
     }
   }
 </script>

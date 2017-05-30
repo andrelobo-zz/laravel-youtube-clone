@@ -1,7 +1,5 @@
 import * as types from 'src/vuex/mutation-types'
 
-console.log(types)
-
 const state = {
   all: []
 }
@@ -25,8 +23,8 @@ const mutations = {
     })
   },
   [types.ALERT_HIDE] (state, alert) {
-    const id = state.alerts.indexOf(alert)
-    state.list.splice(id, 1)
+    const id = state.all.indexOf(alert)
+    state.all.splice(id, 1)
   }
 }
 

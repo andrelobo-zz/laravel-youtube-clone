@@ -34,3 +34,10 @@ export const video = ({ video }) => {
 export const alerts = ({ alert }) => {
   return alert.all
 }
+
+/**
+ *
+ */
+export const topCategories = ({ category }) => {
+  return category.top
+}

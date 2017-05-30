@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid row">
     <div class="col-2 hidden-md-down">
-      <categories :categories="topCategories"></categories>
+      <categories :categories="topCategories" :active="$route.params.id"></categories>
     </div>
 
     <div class="col card-columns">
@@ -12,26 +12,32 @@
 </template>
 
 <script>
-  import { getVideos } from 'src/api/video'
   import { mapGetters, mapActions } from 'vuex'
   import ListVideo from 'src/components/ListVideo'
   import Categories from 'src/components/Categories'
 
   export default {
-    name: 'home',
+    name: 'category',
     computed: {
       ...mapGetters(['videos', 'topCategories'])
     },
     methods: {
-      ...mapActions(['getTopCategories'])
+      ...mapActions(['getTopCategories', 'getVideosForCategory'])
     },
     components: {
       ListVideo,
       Categories
     },
-    mounted () {
-      getVideos()
+    created () {
+      this.getVideosForCategory(this.$route.params.id)
       this.getTopCategories()
+    },
+    watch: {
+      // call again the method if the route changes
+      '$route': function () {
+        this.getVideosForCategory(this.$route.params.id)
+        this.getTopCategories()
+      }
     }
   }
 </script>

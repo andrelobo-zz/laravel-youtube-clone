@@ -7,6 +7,8 @@ import { sync } from 'vuex-router-sync'
 // sync store and router state
 sync(store, router)
 
+require('bootstrap')
+
 /* eslint-disable no-new */
 new Vue({
   router,

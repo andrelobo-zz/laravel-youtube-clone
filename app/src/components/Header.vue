@@ -32,13 +32,21 @@
           <a class="btn btn-outline-success">Upload</a>
         </router-link>
 
-        <router-link tag="li" class="nav-item" :to="{ name: 'Profile' }">
-          <a class="nav-link">
+
+        <li class="dropdown nav-item">
+          <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
             <img :src="profile.avatar"
                  class="rounded rounded-circle avatar-image img-thumbnail d-inline-block align-top"/>
             {{ profile.name }}
           </a>
-        </router-link>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <router-link class="dropdown-item" :to="{ name: 'Profile' }">Profile</router-link>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" @click="logout" href="#">Logout</a>
+          </div>
+        </li>
+
 
       </ul>
     </div>
@@ -46,12 +54,15 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'header',
     computed: {
       ...mapGetters(['authenticated', 'profile'])
+    },
+    methods: {
+      ...mapActions(['logout'])
     }
   }
 </script>

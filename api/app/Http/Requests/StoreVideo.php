@@ -27,7 +27,7 @@ class StoreVideo extends FormRequest
             'title' => 'required|max:255',
             //'description' => '',
             'private' => 'boolean',
-            'video' => 'required|file|mimetypes:video/mp4,video/mpeg,video/h264,video/webm,video/mov',
+            'video' => 'required|file|mimetypes:video/mp4,video/webm',
         ];
     }
 }

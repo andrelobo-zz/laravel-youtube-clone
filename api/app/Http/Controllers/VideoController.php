@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\StoreVideo;
 use App\Video;
 use Illuminate\Http\Request;
@@ -20,6 +21,19 @@ class VideoController extends Controller
     public function home()
     {
         $videos = Video::orderBy('created_at', 'desc')->simplePaginate();
+
+        return $videos;
+    }
+
+    /**
+     * Get videos for category
+     *
+     * @param  \App\Category $category
+     * @return \Illuminate\Http\Response
+     */
+    public function forCategory(Category $category)
+    {
+        $videos = $category->videos()->orderBy('created_at', 'desc')->simplePaginate();
 
         return $videos;
     }

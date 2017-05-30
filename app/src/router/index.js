@@ -10,6 +10,7 @@ import Register from 'src/pages/Register'
 import Profile from 'src/pages/Profile'
 import Upload from 'src/pages/Upload'
 import User from 'src/pages/User'
+import Category from 'src/pages/Category'
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path: '/videos/:id',
     name: 'Video',
     component: Video
+  },
+  {
+    path: '/category/:id',
+    name: 'Category',
+    component: Category
   },
   {
     path: '/users/:id',

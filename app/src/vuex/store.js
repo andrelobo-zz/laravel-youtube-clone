@@ -10,6 +10,7 @@ import api from './modules/api'
 import user from './modules/user'
 import video from './modules/video'
 import alert from './modules/alert'
+import category from './modules/category'
 
 Vue.use(Vuex)
 
@@ -25,7 +26,8 @@ export default new Vuex.Store({
     api,
     user,
     video,
-    alert
+    alert,
+    category
   },
   actions,
   getters,

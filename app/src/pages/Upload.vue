@@ -12,7 +12,7 @@
     <div class="form-group">
       <label for="video">Video file</label>
       <input type="file" ref="video" class="form-control-file" id="video" aria-describedby="videoHelp">
-      <small id="videoHelp" class="form-text text-muted">Video files supported are mp4, mpeg, h264, webm, mov</small>
+      <small id="videoHelp" class="form-text text-muted">Video files supported are mp4, webm</small>
     </div>
     <div class="form-check">
       <label class="form-check-label">
@@ -21,6 +21,23 @@
       </label>
     </div>
     <button type="submit" class="btn btn-primary" @click="upload">Submit</button>
+
+    <!-- Upload progress modal -->
+    <div class="modal fade" ref="progressModal" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="progressModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="progressModalTitle">Upload in progress</h5>
+          </div>
+          <div class="modal-body">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" :style="{ width: progress + '%'}" :aria-valuenow="progress" aria-valuemin="0" :aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -33,7 +50,8 @@
       return {
         title: '',
         description: '',
-        private: false
+        private: false,
+        progress: 0
       }
     },
     methods: {
@@ -45,7 +63,14 @@
         formData.append('private', this.private ? '0' : '1')
         formData.append('video', this.$refs.video.files[0])
 
-        uploadVideo(formData)
+        $(this.$refs.progressModal).modal('show')
+        uploadVideo(formData, (progress) => {
+          this.progress = (progress.loaded / progress.total) * 100
+        })
+        .then((video) => {
+          $(this.$refs.progressModal).modal('hide')
+          this.$router.push({name: 'Video', params: { id: video.id }})
+        })
       }
     }
   }

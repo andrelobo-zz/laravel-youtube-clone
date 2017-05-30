@@ -21,7 +21,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 Route::get('/videos', 'VideoController@home');
+Route::get('/videos/category/{category}', 'VideoController@forCategory');
 Route::get('/videos/{video}', 'VideoController@show');
+
+Route::get('/categories/top', 'CategoryController@top');
 
 Route::post('/users', 'UserController@store')->name('register');
 Route::get('/users/{user}', 'UserController@show');

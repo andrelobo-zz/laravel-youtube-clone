@@ -49,7 +49,7 @@
         alertLeave: false
       }
     },
-    ready: function () {
+    mounted () {
       if (this.show && Boolean(this.duration)) {
         setTimeout(() => {
           if (this.alert) {

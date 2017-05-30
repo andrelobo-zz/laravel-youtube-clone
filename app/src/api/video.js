@@ -14,6 +14,13 @@ export const getVideos = () => {
 }
 
 /**
+ * Get category videos
+ */
+export const getVideosForCategory = (id) => {
+  return API.get(`/api/videos/category/${id}`)
+}
+
+/**
  * Get current authenticated user's profile
  */
 export const getVideo = (id) => {
@@ -26,9 +33,10 @@ export const getVideo = (id) => {
 /**
  * Get current authenticated user's profile
  */
-export const uploadVideo = (formData) => {
-  return API.post(`/api/videos`, formData)
+export const uploadVideo = (formData, onUploadProgress) => {
+  return API.post(`/api/videos`, formData, {onUploadProgress})
   .then(({data}) => {
     store.commit(UPLOAD_VIDEO, data)
+    return data
   })
 }

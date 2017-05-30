@@ -27,3 +27,8 @@ export const CREATE_USER = 'CREATE_USER'
 export const GET_VIDEOS = 'GET_VIDEOS'
 export const GET_VIDEO = 'GET_VIDEO'
 export const UPLOAD_VIDEO = 'UPLOAD_VIDEO'
+
+/**
+ * Category
+ */
+export const GET_TOP_CATEGORIES = 'GET_TOP_CATEGORIES'

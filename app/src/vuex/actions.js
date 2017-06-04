@@ -50,6 +50,17 @@ export const getTopCategories = ({commit}) => {
     return Promise.reject(err)
   })
 }
+export const findCategories = ({commit}, name) => {
+  return APICategory.findCategories(name)
+  .then(({data}) => {
+    commit(types.FIND_CATEGORIES, data)
+  })
+  .catch(err => {
+    commit(types.ALERT_SHOW,
+      {title: 'API Error', message: 'Failed to find categories', type: 'danger'})
+    return Promise.reject(err)
+  })
+}
 
 /**
  * Video

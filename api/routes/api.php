@@ -25,6 +25,7 @@ Route::get('/videos/category/{category}', 'VideoController@forCategory');
 Route::get('/videos/{video}', 'VideoController@show');
 
 Route::get('/categories/top', 'CategoryController@top');
+Route::get('/categories/find', 'CategoryController@find');
 
 Route::post('/users', 'UserController@store')->name('register');
 Route::get('/users/{user}', 'UserController@show');

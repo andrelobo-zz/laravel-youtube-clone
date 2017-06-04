@@ -36,8 +36,12 @@ export const alerts = ({ alert }) => {
 }
 
 /**
- *
+ * Categories
  */
 export const topCategories = ({ category }) => {
   return category.top
 }
+export const foundCategories = ({ category }) => {
+  return category.find
+}
+

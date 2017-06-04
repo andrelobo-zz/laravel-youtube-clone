@@ -51,7 +51,28 @@ class VideoController extends Controller
         $video = new Video($request->all());
         $video->file = $this->videosPath . $path;
 
-        Auth::user()->videos()->save($video);
+        $video = Auth::user()->videos()->save($video);
+
+        // Categories we wan't to add
+        $inputCategories = explode(',', $request->input('categories'));
+
+        // Find categories we wan't to add to video
+        $existingCategories = Category::whereIn('name', $inputCategories)->get();
+
+        // Get categories that needs to be created
+        $inputCategories = array_filter($inputCategories, function ($value) use ($existingCategories) {
+            $isCreated = $existingCategories->where('name', $value);
+            return count($isCreated) == 0;
+        });
+
+        $createdCategories = array_map(function ($value) {
+            return Category::create(["name" => $value]);
+        }, $inputCategories);
+
+        $video->categories()->attach($existingCategories);
+        $video->categories()->attach(array_map(function ($value) {
+            return $value["id"];
+        }, $createdCategories));
 
         return $video;
     }

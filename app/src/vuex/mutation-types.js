@@ -32,3 +32,4 @@ export const UPLOAD_VIDEO = 'UPLOAD_VIDEO'
  * Category
  */
 export const GET_TOP_CATEGORIES = 'GET_TOP_CATEGORIES'
+export const FIND_CATEGORIES = 'FIND_CATEGORIES'

@@ -25,7 +25,8 @@ class StoreVideo extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            //'description' => '',
+            'description' => 'string',
+            'categories' => 'string',
             'private' => 'boolean',
             'video' => 'required|file|mimetypes:video/mp4,video/webm',
         ];

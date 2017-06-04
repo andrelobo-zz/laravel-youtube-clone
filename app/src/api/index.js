@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://generic-videos.local'
+export const BASE_URL = 'http://localhost:8000'
 
 import axios from 'axios'
 
